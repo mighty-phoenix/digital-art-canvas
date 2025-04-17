@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Art Canvas",
+  "name": "Digital Art Canvas",
+  "description": "Create stunning digital artwork with a powerful, intuitive design suite",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#6366f1",
+  "background_color": "#000000",
+  "categories": ["art", "design", "creativity", "tools"]
 }
