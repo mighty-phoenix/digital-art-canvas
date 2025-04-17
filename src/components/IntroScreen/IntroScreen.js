@@ -73,10 +73,10 @@ const IntroScreen = ({ onStart }) => {
   const handleInteraction = () => {
     setAutoScrollEnabled(false);
     
-    // Resume auto-scroll after 10 seconds of inactivity
+    // Resume auto-scroll after 1 second of inactivity
     setTimeout(() => {
       setAutoScrollEnabled(true);
-    }, 10000);
+    }, 1000);
   };
 
   return (
