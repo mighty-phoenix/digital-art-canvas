@@ -38,20 +38,19 @@ const CanvasTools = ({
   
   // Effect to detect color changes and show animation
   useEffect(() => {
-    // When color changes and tool is changed from eyedropper to brush,
-    // it likely means the eyedropper was used
-    if (tool === 'brush' && colorPicked === false) {
+    // When color changes, show the animation
+    if (!colorPicked) {
       setColorPicked(true);
       
       // Reset the animation after a delay
       const timer = setTimeout(() => {
         setColorPicked(false);
-      }, 1500);
+      }, 500); // Shorter duration for smoother updates in rainbow mode
       
       return () => clearTimeout(timer);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [color, tool]);
+  }, [color]);
   
   return (
     <div className={`canvas-tools ${isCollapsed ? 'collapsed' : ''}`}>
@@ -150,8 +149,8 @@ const CanvasTools = ({
           <div className="color-preview-container">
             <span 
               style={{ backgroundColor: color }} 
-              className={`color-preview ${colorPicked ? 'picked' : ''}`}
-              title="Current color"
+              className={`color-preview ${colorPicked ? 'picked' : ''} ${isDynamicColor ? 'rainbow-active' : ''}`}
+              title={isDynamicColor ? "Rainbow brush active" : "Current color"}
             ></span>
             <input 
               type="color" 
