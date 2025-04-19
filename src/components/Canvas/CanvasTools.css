@@ -12,7 +12,7 @@
   overflow-y: auto;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
   transition: all var(--transition-medium);
   scrollbar-width: auto;
   /* Firefox */
@@ -49,9 +49,9 @@
   background-color: rgba(15, 23, 42, 0.75);
   border-top-left-radius: var(--border-radius-xl);
   border-bottom-left-radius: var(--border-radius-xl);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
   backdrop-filter: blur(10px);
   z-index: 0;
 }
@@ -162,7 +162,7 @@
 .tools-section {
   margin-bottom: 28px;
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
   position: relative;
 }
 
@@ -443,7 +443,7 @@
   padding: 3px 8px;
   border-radius: var(--border-radius-md);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
 }
 
 .slider-group input[type="range"] {
@@ -496,7 +496,7 @@
 
 .magic-btn {
   background-color: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
   padding: 12px 16px;
   border-radius: var(--border-radius-lg);
   display: flex;
@@ -583,7 +583,7 @@
   padding: 15px;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
 }
 
 .action-buttons {
@@ -594,7 +594,7 @@
 
 .action-btn {
   background-color: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
   padding: 14px 20px;
   border-radius: var(--border-radius-lg);
   display: flex;
@@ -676,7 +676,7 @@
   border-radius: var(--border-radius-lg);
   padding: 12px;
   margin-top: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
 }
 
 .checkbox-control {
