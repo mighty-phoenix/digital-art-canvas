@@ -47,22 +47,22 @@ yarn start
 
 ## Keyboard Shortcuts
 
-| Key       | Function             |
-|-----------|----------------------|
-| B         | Brush Tool           |
-| E         | Eraser Tool          |
-| L         | Line Tool            |
-| R         | Rectangle Tool       |
-| C         | Circle Tool          |
-| T         | Text Tool            |
-| I         | Eyedropper Tool      |
-| F         | Fill Tool            |
-| M         | Toggle Rainbow Brush |
-| W         | Toggle Dynamic Width |
-| Ctrl+Z    | Undo                 |
-| Ctrl+Y    | Redo                 |
-| Ctrl+S    | Save Image           |
-| Esc       | Clear Canvas         |
+| Key             | Function             |
+|-----------------|----------------------|
+| B               | Brush Tool           |
+| E               | Eraser Tool          |
+| L               | Line Tool            |
+| R               | Rectangle Tool       |
+| C               | Circle Tool          |
+| T               | Text Tool            |
+| I               | Eyedropper Tool      |
+| F               | Fill Tool            |
+| M               | Toggle Rainbow Brush |
+| W               | Toggle Dynamic Width |
+| Ctrl+Z          | Undo                 |
+| Ctrl+Shift+Z    | Redo                 |
+| Ctrl+S          | Save Image           |
+| Esc             | Clear Canvas         |
 
 ## Tools Overview
 
