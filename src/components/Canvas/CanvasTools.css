@@ -196,7 +196,7 @@
 
 .tools-grid button {
   background-color: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
   border-radius: var(--border-radius-lg);
   padding: 12px;
   cursor: pointer;
