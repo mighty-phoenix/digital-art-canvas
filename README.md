@@ -12,7 +12,7 @@ A powerful interactive digital art canvas application built with React. This app
 - **Text Tool**: Add text with various fonts, sizes and colors
 - **Canvas Actions**: Undo/Redo, Clear canvas, Save image
 - **Keyboard Shortcuts**: Quickly access tools and functions
-- **Responsive Design**: Works on desktop and mobile devices
+- **Responsive Design**: Works on all desktop and mobile devices, with beautiful and extremely intuitive UI/UX and design
 
 ## Getting Started
 
