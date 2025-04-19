@@ -25,7 +25,7 @@ A powerful interactive digital art canvas application built with React. This app
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/digital-art-canvas.git
+git clone https://github.com/mighty-phoenix/digital-art-canvas.git
 cd digital-art-canvas
 ```
 
