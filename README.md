@@ -9,7 +9,7 @@ A powerful interactive digital art canvas application built with React. This app
 - **Professional Drawing Tools**: Brush, Eraser, Line, Rectangle, Circle, Text, Eyedropper, Fill
 - **Advanced Brush Settings**: Customizable size, opacity, and color
 - **Magic Effects**: Rainbow brush with dynamic colors and size-shifting brush
-- **Text Tool**: Add text with various fonts and sizes
+- **Text Tool**: Add text with various fonts, sizes and colors
 - **Canvas Actions**: Undo/Redo, Clear canvas, Save image
 - **Keyboard Shortcuts**: Quickly access tools and functions
 - **Responsive Design**: Works on desktop and mobile devices
