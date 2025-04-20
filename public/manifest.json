@@ -23,5 +23,6 @@
   "display": "standalone",
   "theme_color": "#6366f1",
   "background_color": "#000000",
+  "orientation": "portrait",
   "categories": ["art", "design", "creativity", "tools"]
 }
