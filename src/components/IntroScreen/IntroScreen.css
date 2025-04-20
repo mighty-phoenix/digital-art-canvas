@@ -15,6 +15,9 @@
   padding: 20px;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  will-change: transform; /* Optimize for animations */
+  backface-visibility: hidden; /* Prevent flickering */
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 .intro-screen.mobile-view {
@@ -26,6 +29,7 @@
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: none; /* Prevents bounce effects */
   overscroll-behavior-y: none;
+  background-color: transparent; /* Ensure background is transparent */
 }
 
 .intro-screen.mobile-view .intro-content {
@@ -50,6 +54,8 @@
   transform: translateY(20px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  will-change: transform, opacity; /* Optimize for animations */
+  backface-visibility: hidden; /* Prevent flickering */
 }
 
 .intro-content.loaded {
@@ -242,6 +248,7 @@
   transform: translateY(10px);
   animation: fadeInUp 0.6s forwards;
   animation-delay: 0.4s;
+  will-change: transform, opacity; /* Optimize for animations */
 }
 
 .feature-card {
@@ -258,6 +265,8 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  will-change: transform; /* Optimize for animations */
+  backface-visibility: hidden; /* Prevent flickering */
 }
 
 .feature-card::before {
@@ -510,6 +519,7 @@
     height: auto;
     align-items: flex-start;
     overflow-y: auto;
+    background-color: transparent; /* Ensure background is transparent */
   }
   
   .features-grid {
@@ -527,6 +537,15 @@
     width: calc(100% + 30px);
     scroll-behavior: smooth;
     /* Animation will be handled by JavaScript */
+    will-change: transform; /* Optimize for animations */
+    backface-visibility: hidden; /* Prevent flickering */
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
   
   /* Auto scroll indicator class - this will be used by JavaScript */
@@ -538,6 +557,8 @@
     width: 100%;
     overflow-x: hidden; /* Prevent horizontal scrolling */
     margin-bottom: 30px;
+    position: relative; /* Ensure proper stacking context */
+    z-index: 1; /* Ensure proper stacking context */
   }
   
   .feature-card {
@@ -552,6 +573,8 @@
     width: 85vw;
     scroll-snap-align: center;
     flex: 0 0 auto;
+    will-change: transform; /* Optimize for animations */
+    backface-visibility: hidden; /* Prevent flickering */
   }
   
   .feature-card:after {
@@ -598,6 +621,23 @@
     margin-top: 30px;
     margin-bottom: 20px;
     padding-bottom: 20px; /* Extra padding at the bottom */
+  }
+  
+  /* Adjust logo and title spacing for mobile */
+  .logo-container {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .app-title {
+    text-align: center;
+    width: 100%;
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { 
   FaPaintBrush, 
   FaEraser, 
@@ -20,6 +20,7 @@ const IntroScreen = ({ onStart }) => {
   const scrollIntervalRef = useRef(null);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
   
   // Check if mobile device
   useEffect(() => {
@@ -42,7 +43,7 @@ const IntroScreen = ({ onStart }) => {
 
   // Auto-scroll functionality for mobile
   useEffect(() => {
-    if (isMobile && featuresGridRef.current && autoScrollEnabled) {
+    if (isMobile && featuresGridRef.current && autoScrollEnabled && !isScrolling) {
       const featureCards = featuresGridRef.current.querySelectorAll('.feature-card');
       
       if (featureCards.length > 0) {
@@ -67,25 +68,32 @@ const IntroScreen = ({ onStart }) => {
         clearInterval(scrollIntervalRef.current);
       }
     };
-  }, [isMobile, autoScrollEnabled, currentCardIndex]);
+  }, [isMobile, autoScrollEnabled, currentCardIndex, isScrolling]);
 
   // Pause auto-scroll when user interacts with the grid
   const handleInteraction = () => {
+    setIsScrolling(true);
     setAutoScrollEnabled(false);
     
     // Resume auto-scroll after 1 second of inactivity
     setTimeout(() => {
+      setIsScrolling(false);
       setAutoScrollEnabled(true);
     }, 1000);
   };
 
+  // Memoize the Iridescence component to prevent unnecessary re-renders
+  const iridescenceBackground = useMemo(() => (
+    <Iridescence 
+      mouseReact={false}
+      amplitude={4} 
+      speed={0.9} 
+    />
+  ), []);
+
   return (
     <div className="intro-screen">
-      <Iridescence 
-        mouseReact={false}
-        amplitude={4} 
-        speed={0.9} 
-      />
+      {iridescenceBackground}
       
       <div className={`intro-content ${isLoaded ? 'loaded' : ''}`}>
         <div className="logo-container">

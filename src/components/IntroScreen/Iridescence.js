@@ -57,21 +57,28 @@ export default function Iridescence({
 }) {
   const ctnDom = useRef(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
+  const rendererRef = useRef(null);
+  const programRef = useRef(null);
+  const meshRef = useRef(null);
+  const animateIdRef = useRef(null);
 
   useEffect(() => {
     if (!ctnDom.current) return;
     const ctn = ctnDom.current;
-    const renderer = new Renderer();
+    
+    // Create renderer with alpha enabled to prevent white background
+    const renderer = new Renderer({ alpha: true });
+    rendererRef.current = renderer;
     const gl = renderer.gl;
-    gl.clearColor(1, 1, 1, 1);
-
-    let program;
+    
+    // Set clear color to transparent
+    gl.clearColor(0, 0, 0, 0);
 
     function resize() {
       const scale = 1;
       renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
-      if (program) {
-        program.uniforms.uResolution.value = new Color(
+      if (programRef.current) {
+        programRef.current.uniforms.uResolution.value = new Color(
           gl.canvas.width,
           gl.canvas.height,
           gl.canvas.width / gl.canvas.height
@@ -82,7 +89,7 @@ export default function Iridescence({
     resize();
 
     const geometry = new Triangle(gl);
-    program = new Program(gl, {
+    const program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
       uniforms: {
@@ -100,16 +107,21 @@ export default function Iridescence({
         uSpeed: { value: speed },
       },
     });
+    programRef.current = program;
 
     const mesh = new Mesh(gl, { geometry, program });
+    meshRef.current = mesh;
     let animateId;
 
     function update(t) {
       animateId = requestAnimationFrame(update);
-      program.uniforms.uTime.value = t * 0.001;
-      renderer.render({ scene: mesh });
+      if (programRef.current) {
+        programRef.current.uniforms.uTime.value = t * 0.001;
+        renderer.render({ scene: meshRef.current });
+      }
     }
     animateId = requestAnimationFrame(update);
+    animateIdRef.current = animateId;
     ctn.appendChild(gl.canvas);
 
     function handleMouseMove(e) {
@@ -117,20 +129,26 @@ export default function Iridescence({
       const x = (e.clientX - rect.left) / rect.width;
       const y = 1.0 - (e.clientY - rect.top) / rect.height;
       mousePos.current = { x, y };
-      program.uniforms.uMouse.value[0] = x;
-      program.uniforms.uMouse.value[1] = y;
+      if (programRef.current) {
+        programRef.current.uniforms.uMouse.value[0] = x;
+        programRef.current.uniforms.uMouse.value[1] = y;
+      }
     }
     if (mouseReact) {
       ctn.addEventListener("mousemove", handleMouseMove);
     }
 
     return () => {
-      cancelAnimationFrame(animateId);
+      if (animateIdRef.current) {
+        cancelAnimationFrame(animateIdRef.current);
+      }
       window.removeEventListener("resize", resize);
       if (mouseReact) {
         ctn.removeEventListener("mousemove", handleMouseMove);
       }
-      ctn.removeChild(gl.canvas);
+      if (ctn.contains(gl.canvas)) {
+        ctn.removeChild(gl.canvas);
+      }
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -140,6 +158,7 @@ export default function Iridescence({
     <div
       ref={ctnDom}
       className="iridescence-container"
+      style={{ backgroundColor: 'transparent' }}
       {...rest}
     />
   );
