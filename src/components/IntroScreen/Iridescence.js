@@ -75,8 +75,7 @@ export default function Iridescence({
     gl.clearColor(0, 0, 0, 0);
 
     function resize() {
-      const scale = 1;
-      renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
+      renderer.setSize(1920, 1080);
       if (programRef.current) {
         programRef.current.uniforms.uResolution.value = new Color(
           gl.canvas.width,
