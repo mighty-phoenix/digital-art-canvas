@@ -430,8 +430,15 @@
 .intro-footer a {
   color: wheat;
   text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.intro-footer a svg {
+  margin-right: 4px;
+  vertical-align: middle;
 }
 
 .intro-footer a:hover {

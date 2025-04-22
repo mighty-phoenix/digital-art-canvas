@@ -6,7 +6,8 @@ import {
   FaEyeDropper, 
   FaMagic, 
   FaSave,
-  FaChevronRight
+  FaChevronRight,
+  FaGithub
 } from 'react-icons/fa';
 import Iridescence from './Iridescence';
 import Magnet from '../Magnet';
@@ -191,6 +192,7 @@ const IntroScreen = ({ onStart }) => {
         </Magnet>
         
         <footer className="intro-footer">
+          <p><a href="https://github.com/mighty-phoenix/digital-art-canvas" target="_blank" rel="noopener noreferrer"><FaGithub /> Source Code</a></p>
           <p>Created with ❤️ by <a href="https://www.linkedin.com/in/rakshit-kumar-a8b11914b/" target="_blank" rel="noopener noreferrer">Rakshit Kumar</a></p>
         </footer>
       </div>
